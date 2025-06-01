@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { ColorModeContext } from "./contexts/ColorModeContext";
+import { useColorMode } from "./contexts/ColorModeContext";
 import { Button, Container } from "@mui/material";
 
 function App() {
-  const { toggleColorMode, mode } = useContext(ColorModeContext);
+  const { toggleColorMode, mode } = useColorMode();
 
   return (
     <Container>
