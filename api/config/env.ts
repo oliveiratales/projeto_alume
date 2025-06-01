@@ -10,3 +10,4 @@ export const DB_PORT = Number(process.env.DB_PORT) || 3306;
 export const ENVIRONMENT = process.env.ENVIRONMENT || "development";
 export const PORT = Number(process.env.PORT) || 3000;
 export const JWT_SECRET = process.env.JWT_SECRET || "sua_chave_secreta";
+export const CORS_URL = process.env.CORS_URL || "http://localhost:5173";
