@@ -36,6 +36,7 @@ export default function Login() {
     try {
       const res = await login(data);
       sessionStorage.setItem("token", res.token);
+      sessionStorage.setItem("name", res.student.firstName + " " + res.student.lastName);
       navigate("/");
     } catch (error) {
       toast.error(typeof error === "string" ? error : "Erro ao fazer login.");

@@ -12,9 +12,10 @@ export const getDesignTokens = (mode: PaletteMode) => ({
       contrastText: "#ffffff",
     },
     background: {
-      default: mode === "light" ? "#f4f6f8" : "#121212",
-      paper: mode === "light" ? "#ffffff" : "#1e1e1e",
+      default: mode === "light" ? "#f4f6f8" : "#1e1e1e",
+      paper: mode === "light" ? "#ffffff" : "#121212",
     },
+
     text: {
       primary: mode === "light" ? "#000000" : "#ffffff",
       secondary: mode === "light" ? "#555555" : "#cccccc",
