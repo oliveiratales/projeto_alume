@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug API (ts-node-dev)",
+      "type": "pwa-node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/api",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "ts-node-dev",
+        "--respawn",
+        "--transpile-only",
+        "index.ts"
+      ],
+      "autoAttachChildProcesses": true,
+      "restart": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}
