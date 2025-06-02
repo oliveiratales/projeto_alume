@@ -27,8 +27,6 @@ export default function DefaultLayout() {
         <Container
           maxWidth="lg"
           sx={{
-            mt: "80px",
-            mb: "70px",
             flexGrow: 1,
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}

@@ -7,9 +7,10 @@ import {
 } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-import Home from "./pages/home/Home";
 import { ColorModeProvider } from "./contexts/ColorModeProvider";
 import Layout from "./components/layout/Layout";
+import Home from "./pages/home/Home";
+import MyProfile from "./pages/profile/MyProfile";
 
 function RequireAuth() {
   const token = sessionStorage.getItem("token");
@@ -32,6 +33,7 @@ export default function App() {
           <Route element={<RequireAuth />}>
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<MyProfile />} />
             </Route>
           </Route>
 

@@ -21,7 +21,7 @@ const menuItems = [
   { text: "Dashboard", icon: <DashboardIcon />, path: "/" },
   { text: "Nova Simulação", icon: <CalculateIcon />, path: "/simulador" },
   { text: "Histórico", icon: <HistoryIcon />, path: "/historico" },
-  { text: "Meu Perfil", icon: <PersonIcon />, path: "/perfil" },
+  { text: "Meu Perfil", icon: <PersonIcon />, path: "/profile" },
 ];
 
 interface SidebarProps {
