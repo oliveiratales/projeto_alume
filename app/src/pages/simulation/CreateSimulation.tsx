@@ -116,7 +116,7 @@ export default function CreateSimulation() {
         }}
       >
         <Typography variant="h5" fontWeight="bold" gutterBottom>
-          Nova simulação
+          Nova Simulação
         </Typography>
 
         <Divider sx={{ mb: 3 }} />
