@@ -53,7 +53,7 @@ export default function CreateSimulation() {
     defaultValues: {
       totalAmount: 0,
       numberOfInstallments: 1,
-      monthlyInterestRate: 0.01,
+      monthlyInterestRate: 0.15,
     },
   });
 
@@ -78,11 +78,7 @@ export default function CreateSimulation() {
         return;
       }
       const pmt = pv * (i / denominator);
-      if (isNaN(pmt) || !isFinite(pmt)) {
-        setMonthlyInstallmentAmount(null);
-      } else {
-        setMonthlyInstallmentAmount(pmt);
-      }
+      setMonthlyInstallmentAmount(isNaN(pmt) || !isFinite(pmt) ? null : pmt);
     } else {
       setMonthlyInstallmentAmount(null);
     }
@@ -105,27 +101,28 @@ export default function CreateSimulation() {
         navigate("/login");
         return;
       }
-
       toast.error(err.data?.message ?? "Erro ao registrar sua simulação.");
     }
   }
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 6 }}>
+    <Container maxWidth="sm" sx={{ mt: 8 }}>
       <Card
         elevation={3}
         sx={{
-          borderRadius: 1,
           p: 4,
+          borderRadius: 2,
           boxShadow: "0px 4px 20px rgba(0,0,0,0.05)",
         }}
       >
         <Typography variant="h5" fontWeight="bold" gutterBottom>
-          Simulador de Financiamento
+          Nova simulação
         </Typography>
+
         <Divider sx={{ mb: 3 }} />
+
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <Stack spacing={2}>
+          <Stack spacing={3}>
             <Controller
               name="totalAmount"
               control={control}
@@ -134,9 +131,8 @@ export default function CreateSimulation() {
                   {...field}
                   type="number"
                   label="Valor Total (R$)"
-                  variant="outlined"
-                  size="small"
                   fullWidth
+                  size="medium"
                   error={!!errors.totalAmount}
                   helperText={errors.totalAmount?.message}
                   inputProps={{ step: "0.01", min: "0" }}
@@ -151,10 +147,9 @@ export default function CreateSimulation() {
                 <TextField
                   {...field}
                   type="number"
-                  label="Taxa de Juros (%) mensal (ex: 0.15 para 0,15%)"
-                  variant="outlined"
-                  size="small"
+                  label="Taxa de Juros (%) mensal"
                   fullWidth
+                  size="medium"
                   error={!!errors.monthlyInterestRate}
                   helperText={errors.monthlyInterestRate?.message}
                   inputProps={{ step: "0.01", min: "0", max: "100" }}
@@ -170,9 +165,8 @@ export default function CreateSimulation() {
                   {...field}
                   type="number"
                   label="Quantidade de Parcelas"
-                  variant="outlined"
-                  size="small"
                   fullWidth
+                  size="medium"
                   error={!!errors.numberOfInstallments}
                   helperText={errors.numberOfInstallments?.message}
                   inputProps={{ step: "1", min: "1", max: "360" }}
@@ -200,7 +194,7 @@ export default function CreateSimulation() {
               loading={isSubmitting}
               disabled={isSubmitting}
             >
-              Entrar
+              Simular
             </CustomButton>
           </Stack>
         </form>

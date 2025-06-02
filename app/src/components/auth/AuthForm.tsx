@@ -30,7 +30,7 @@ export default function AuthForm({
           padding: 4,
           width: 400,
           maxWidth: "100%",
-          borderRadius: 2,
+          borderRadius: 1,
           boxShadow: "0 0 15px rgba(2, 73, 83, 0.3)",
           textAlign: "center",
         }}

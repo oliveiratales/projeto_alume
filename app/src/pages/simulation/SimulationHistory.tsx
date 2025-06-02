@@ -97,8 +97,7 @@ export default function SimulationsHistory() {
       headerName: "Juros Mensal (%)",
       width: 160,
       renderCell: (params) => {
-        const percent = (params.value * 100).toFixed(2);
-        return percent + "%";
+        return params.value + "%";
       },
     },
     {
