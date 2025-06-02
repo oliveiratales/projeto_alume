@@ -1,5 +1,5 @@
 
-# Projeto Alume
+# 🚀 Projeto Alume
 
 - **Banco de Dados** (MySQL via Docker-compose)
 - **API** (Node.js com TypeScript)
