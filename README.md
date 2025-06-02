@@ -7,6 +7,17 @@
 
 ---
 
+## 📦 Clonando o repositório
+
+Para começar, clone o repositório:
+
+```bash
+git clone https://github.com/oliveiratales/projeto_alume.git
+cd projeto_alume
+```
+
+---
+
 ## 🗄️ Banco de Dados
 
 - Atualize o arquivo `docker-compose.yml` na raiz do projeto, se necessário, com as configurações desejadas.
