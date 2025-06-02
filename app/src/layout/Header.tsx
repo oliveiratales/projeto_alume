@@ -58,7 +58,7 @@ export default function Header({ handleDrawerToggle }: HeaderProps) {
         borderBottom: `1px solid ${
           theme.palette.mode === "dark" ? "#444" : "#ddd"
         }`,
-        position: "fixed"
+        position: "fixed",
       }}
     >
       <Toolbar
@@ -105,7 +105,7 @@ export default function Header({ handleDrawerToggle }: HeaderProps) {
               sx={{ fontWeight: 400 }}
               noWrap
             >
-              Bem vindo, {name}
+              {name}
             </Typography>
           )}
 

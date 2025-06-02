@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
+import { ptBR } from "@mui/x-data-grid/locales";
 import { useEffect, useState } from "react";
 import {
   getUserSimulations,
@@ -135,7 +136,7 @@ export default function SimulationsHistory() {
         </Typography>
         <Divider sx={{ mb: 3 }} />
 
-        <Stack direction="row" spacing={2} mb={3}>
+        <Stack direction={{ xs: "column", sm: "row" }} spacing={2} mb={3}>
           <TextField
             label="Filtrar por data (AAAA-MM-DD)"
             variant="outlined"
@@ -180,6 +181,7 @@ export default function SimulationsHistory() {
               borderRadius: 1,
               fontFamily: "inherit",
             }}
+            localeText={ptBR.components.MuiDataGrid.defaultProps.localeText}
           />
         </Box>
       </Card>
