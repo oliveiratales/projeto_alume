@@ -7,7 +7,6 @@ import {
 } from "../dtos/SimulationDTO";
 import { SimulationMapper } from "../mappers/SimulationMapper";
 import { CustomError } from "../utils/CustomError";
-import { CalculateMonthlyInstallment } from "../utils/CalculateMonthlyInstallment";
 
 export class SimulationService implements ISimulationService {
   constructor(private simulationRepository: ISimulationRepository) {}
@@ -16,21 +15,10 @@ export class SimulationService implements ISimulationService {
     data: CreateSimulationDTO,
     studentId: number
   ): Promise<SimulationResponseDTO> {
-    const monthlyInstallmentAmount = CalculateMonthlyInstallment(
-      data.totalAmount,
-      data.monthlyInterestRate,
-      data.numberOfInstallments
-    );
 
     data.studentId = studentId;
-
-    const dataWithInstallment = {
-      ...data,
-      monthlyInstallmentAmount,
-    };
-
     const simulation = await this.simulationRepository.create(
-      dataWithInstallment
+      data
     );
     return SimulationMapper.toDTO(simulation);
   }
@@ -69,20 +57,11 @@ export class SimulationService implements ISimulationService {
         data.monthlyInterestRate ?? simulation.monthlyInterestRate,
       numberOfInstallments:
         data.numberOfInstallments ?? simulation.numberOfInstallments,
+      monthlyInstallmentAmount:
+        data.monthlyInstallmentAmount ?? simulation.monthlyInstallmentAmount,
     };
 
-    const monthlyInstallmentAmount = CalculateMonthlyInstallment(
-      updatedData.totalAmount,
-      updatedData.monthlyInterestRate,
-      updatedData.numberOfInstallments
-    );
-
-    const dataWithInstallment = {
-      ...data,
-      monthlyInstallmentAmount,
-    };
-
-    await this.simulationRepository.update(id, dataWithInstallment);
+    await this.simulationRepository.update(id, updatedData);
 
     const updated = await this.simulationRepository.findById(id);
     return SimulationMapper.toDTO(updated!);

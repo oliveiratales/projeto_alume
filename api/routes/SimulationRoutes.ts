@@ -4,9 +4,7 @@ import { validate } from "../middlewares/validateMiddleware";
 import { authenticateToken } from "../middlewares/authMiddleware";
 import * as simulationValidation from "../validations/SimulationValidation";
 
-export function SimulationRoutes(
-  simulationController: SimulationController
-) {
+export function SimulationRoutes(simulationController: SimulationController) {
   const router = Router();
 
   /**
@@ -36,6 +34,9 @@ export function SimulationRoutes(
    *         numberOfInstallments:
    *           type: integer
    *           example: 12
+   *         monthlyInstallmentAmount:
+   *           type: number
+   *           example: 12205
    *
    *     UpdateSimulationDTO:
    *       type: object
@@ -49,6 +50,9 @@ export function SimulationRoutes(
    *         numberOfInstallments:
    *           type: integer
    *           example: 18
+   *         monthlyInstallmentAmount:
+   *           type: number
+   *           example: 12205
    *
    *     SimulationResponseDTO:
    *       type: object

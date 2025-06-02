@@ -21,6 +21,15 @@ export const createSimulationSchema = Joi.object({
       "number.positive": "O monthlyInterestRate deve ser um número positivo",
       "any.required": "O monthlyInterestRate é obrigatório",
     }),
+  monthlyInstallmentAmount: Joi.number()
+    .precision(2)
+    .positive()
+    .required()
+    .messages({
+      "number.base": "O monthlyInstallmentAmount deve ser um número",
+      "number.positive": "O monthlyInstallmentAmount deve ser um número positivo",
+      "any.required": "O monthlyInstallmentAmount é obrigatório",
+    }),
 });
 
 export const updateSimulationSchema = Joi.object({
@@ -36,5 +45,9 @@ export const updateSimulationSchema = Joi.object({
   monthlyInterestRate: Joi.number().precision(4).positive().messages({
     "number.base": "O monthlyInterestRate deve ser um número",
     "number.positive": "O monthlyInterestRate deve ser um número positivo",
+  }),
+  monthlyInstallmentAmount: Joi.number().precision(2).positive().messages({
+    "number.base": "O monthlyInstallmentAmount deve ser um número",
+    "number.positive": "O monthlyInstallmentAmount deve ser um número positivo",
   }),
 });

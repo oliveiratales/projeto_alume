@@ -15,7 +15,7 @@ interface SimulationAttributes {
 interface SimulationCreationAttributes
   extends Optional<
     SimulationAttributes,
-    "id" | "monthlyInstallmentAmount" | "createdAt"
+    "id" | "createdAt"
   > {}
 
 class Simulation
