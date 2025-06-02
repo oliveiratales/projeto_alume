@@ -19,8 +19,8 @@ const drawerWidth = 240;
 
 const menuItems = [
   { text: "Dashboard", icon: <DashboardIcon />, path: "/" },
-  { text: "Nova Simulação", icon: <CalculateIcon />, path: "/simulador" },
-  { text: "Histórico", icon: <HistoryIcon />, path: "/historico" },
+  { text: "Nova Simulação", icon: <CalculateIcon />, path: "/create" },
+  { text: "Histórico", icon: <HistoryIcon />, path: "/history" },
   { text: "Meu Perfil", icon: <PersonIcon />, path: "/profile" },
 ];
 
@@ -86,6 +86,7 @@ export default function Sidebar({
             top: "64px",
             height: "calc(100% - 64px)",
             zIndex: (theme) => theme.zIndex.appBar - 1,
+            position: "fixed",
           },
         }}
         open

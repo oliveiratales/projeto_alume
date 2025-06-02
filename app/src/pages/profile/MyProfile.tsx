@@ -13,7 +13,6 @@ import { Edit } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../utils/FormatDate";
-
 import {
   getUserData,
   updateUserData,
@@ -21,13 +20,7 @@ import {
   type UpdateUserData,
 } from "../../services/userService";
 import EditUserModal from "../../components/profile/EditUserModal";
-
-type ApiError = {
-  status?: number;
-  data?: {
-    message?: string;
-  };
-};
+import { type ApiError } from "../../types/ApiError";
 
 export default function MyProfile() {
   const [userData, setUserData] = useState<UserProfile | null>(null);
@@ -73,10 +66,10 @@ export default function MyProfile() {
 
   const renderInfo = (label: string, value?: string | null) => (
     <Box>
-      <Typography variant="subtitle2" color="text.secondary">
+      <Typography variant="caption" color="text.secondary">
         {label}
       </Typography>
-      <Typography variant="body1" fontWeight="500">
+      <Typography variant="body1" fontWeight={500}>
         {loading ? <Skeleton width={160} /> : value || "-"}
       </Typography>
     </Box>
@@ -84,10 +77,15 @@ export default function MyProfile() {
 
   return (
     <>
-      <Container maxWidth="sm" sx={{ mt: 6 }}>
+      <Container maxWidth="md" sx={{ mt: 6 }}>
         <Card
-          elevation={2}
-          sx={{ borderRadius: 1, p: 3, position: "relative" }}
+          elevation={3}
+          sx={{
+            p: 4,
+            borderRadius: 1,
+            position: "relative",
+            boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.05)",
+          }}
         >
           <Typography variant="h5" fontWeight="bold" gutterBottom>
             Meu Perfil
@@ -96,27 +94,28 @@ export default function MyProfile() {
           {!loading && (
             <IconButton
               onClick={() => setEditOpen(true)}
-              sx={{ position: "absolute", top: 16, right: 16 }}
+              sx={{ position: "absolute", top: 24, right: 24 }}
               aria-label="Editar perfil"
             >
               <Edit />
             </IconButton>
           )}
 
-          <Divider sx={{ mb: 3 }} />
+          <Divider sx={{ my: 2 }} />
 
           <Stack spacing={3}>
             {renderInfo(
-              "Nome",
-              `${userData?.firstName ?? ""} ${
-                userData?.lastName ?? ""
-              }`.trim() || "-"
+              "Nome completo",
+              `${userData?.firstName ?? ""} ${userData?.lastName ?? ""}`.trim()
             )}
+            <Divider />
             {renderInfo("Email", userData?.email)}
+            <Divider />
             {renderInfo(
               "Último login",
               userData?.lastLogin ? formatDate(userData.lastLogin) : "-"
             )}
+            <Divider />
             {renderInfo(
               "Criado em",
               userData?.createdAt ? formatDate(userData.createdAt) : "-"

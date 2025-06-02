@@ -7,7 +7,7 @@ export interface Simulation {
   monthlyInterestRate: number;
   numberOfInstallments: number;
   monthlyInstallmentAmount: number;
-  createdAt: string;
+  createdAt: Date;
 }
 
 export async function getUserSimulations(): Promise<Simulation[]> {
@@ -20,4 +20,11 @@ export async function getUserSimulations(): Promise<Simulation[]> {
     }
     throw "Erro desconhecido";
   }
+}
+
+export async function createSimulation(
+  data: Omit<Simulation, "id" | "createdAt">
+) {
+  const response = await api.post("/simulations", data);
+  return response.data;
 }

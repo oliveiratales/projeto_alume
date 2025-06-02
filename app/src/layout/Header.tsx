@@ -12,9 +12,9 @@ import {
 } from "@mui/material";
 import { AccountCircle, Brightness4, Brightness7 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useColorMode } from "../../contexts/ColorModeContext";
+import { useColorMode } from "../contexts/ColorModeContext";
 import MenuIcon from "@mui/icons-material/Menu";
-import logo from "../../assets/logo.svg";
+import logo from "../assets/logo.svg";
 
 interface HeaderProps {
   handleDrawerToggle: () => void;
@@ -45,7 +45,7 @@ export default function Header({ handleDrawerToggle }: HeaderProps) {
 
   const handleMyAccount = () => {
     handleClose();
-    navigate("/meus-dados");
+    navigate("/profile");
   };
 
   return (
@@ -58,6 +58,7 @@ export default function Header({ handleDrawerToggle }: HeaderProps) {
         borderBottom: `1px solid ${
           theme.palette.mode === "dark" ? "#444" : "#ddd"
         }`,
+        position: "fixed"
       }}
     >
       <Toolbar
