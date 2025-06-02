@@ -29,13 +29,19 @@ docker-compose up -d
 
 ### Configuração
 
-1. Copie o arquivo `.env.example` e renomeie para `.env`:
+1. Acesse a pasta da API:
+
+```bash
+cd api
+```
+
+2. Copie o arquivo `.env.example` e renomeie para `.env`:
 
 ```bash
 cp .env.example .env
 ```
 
-2. Atualize as variáveis de ambiente conforme necessário.
+3. Atualize as variáveis de ambiente conforme necessário.
 
 ### Inicialização
 
@@ -85,13 +91,19 @@ Caso o token esteja ausente, inválido ou expirado, a API retornará um erro de 
 
 ### Configuração
 
-1. Copie o arquivo `.env.example` dentro da pasta do app e renomeie para `.env`:
+1. Acesse a pasta do APP:
+
+```bash
+cd app
+```
+
+2. Copie o arquivo `.env.example` dentro da pasta do app e renomeie para `.env`:
 
 ```bash
 cp .env.example .env
 ```
 
-2. Atualize as variáveis conforme necessário.
+3. Atualize as variáveis conforme necessário.
 
 ### Inicialização
 
