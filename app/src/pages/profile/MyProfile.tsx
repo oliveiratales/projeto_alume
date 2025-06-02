@@ -59,8 +59,14 @@ export default function MyProfile() {
       setUserData(freshData);
     } catch (error) {
       const err = error as ApiError;
-      toast.error(err.data?.message ?? "Erro ao atualizar perfil.");
-      throw error;
+      if (err.status === 401 || err.status === 403) {
+        toast.error("Sessão expirada. Por favor, faça o login novamente.");
+        sessionStorage.clear();
+        navigate("/login");
+        return;
+      }
+
+      toast.error(err.data?.message ?? "Erro ao carregar seus dados.");
     }
   };
 
