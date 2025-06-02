@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Box, Container } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Box, Container, Fade } from "@mui/material";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import Sidebar from "../layout/Sidebar";
@@ -9,6 +9,7 @@ const drawerWidth = 240;
 
 export default function DefaultLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -31,7 +32,11 @@ export default function DefaultLayout() {
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}
         >
-          <Outlet />
+          <Fade key={location.pathname} in timeout={500}>
+            <Box>
+              <Outlet />
+            </Box>
+          </Fade>
         </Container>
       </Box>
 
