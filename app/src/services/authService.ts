@@ -31,8 +31,8 @@ export async function register(data: RegisterData) {
     const response = await axios.post(`${API_BASE_URL}/register`, data);
     return response.data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      throw error.message;
+    if (axios.isAxiosError(error)) {
+      throw error.response?.data?.error || "Erro na requisição";
     }
     throw "Erro desconhecido";
   }

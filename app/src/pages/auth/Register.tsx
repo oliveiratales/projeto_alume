@@ -20,14 +20,20 @@ type RegisterPayload = Omit<RegisterFormInputs, "confirmPassword">;
 
 const schema = yup.object({
   firstName: yup.string().required("Nome obrigatório"),
-  lastName: yup.string().required("Sobrenome obrigatório"),
-  email: yup.string().email("Email inválido").required("Email obrigatório"),
+  lastName: yup.string().trim().required("Sobrenome obrigatório"),
+  email: yup
+    .string()
+    .trim()
+    .email("Email inválido")
+    .required("Email obrigatório"),
   password: yup
     .string()
+    .trim()
     .min(6, "Mínimo 6 caracteres")
     .required("Senha obrigatória"),
   confirmPassword: yup
     .string()
+    .trim()
     .oneOf([yup.ref("password")], "As senhas devem coincidir")
     .required("Confirmação de senha obrigatória"),
 });

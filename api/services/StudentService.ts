@@ -15,6 +15,13 @@ export class StudentService implements IStudentService {
   constructor(private studentRepository: IStudentRepository) {}
 
   async create(data: CreateStudentDTO): Promise<StudentResponseDTO> {
+    // Verifica e-mail do usuário
+    const existingEmail = await this.studentRepository.findByEmail(data.email);
+
+    if (existingEmail) {
+      throw new CustomError("E-mail já cadastrado.", 400);
+    }
+    
     const salt = await bcrypt.genSalt(10);
     data.password = await bcrypt.hash(data.password, salt);
 
